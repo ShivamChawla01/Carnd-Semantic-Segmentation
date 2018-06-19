@@ -66,7 +66,7 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
 
     input_3=tf.layers.conv2d_transpose(output_4, num_classes, 4, 2, padding='same', kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
 
-    input2_3=tf.layers.conv2d(vgg_layer3_out, num_classes, 1, padding='same', kernel_regularizer=tf.contrib.layers..l2_regularizer(1e-3))
+    input2_3=tf.layers.conv2d(vgg_layer3_out, num_classes, 1, padding='same', kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
 
     
     output_3=tf.add(input2_3,input_3)
@@ -156,7 +156,7 @@ def run():
         #  https://datascience.stackexchange.com/questions/5224/how-to-prepare-augment-images-for-neural-network
 
         # TODO: Build NN using load_vgg, layers, and optimize function
-        epochs=1
+        epochs=25
         batch_size=5
 
         correct_label=tf.placeholder(tf.int32,[None,None,None,num_classes],name='correct_label')
