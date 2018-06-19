@@ -162,7 +162,7 @@ def run():
         correct_label=tf.placeholder(tf.int32,[None,None,None,num_classes],name='correct_label')
         learning_rate=tf.placeholder(tf.float32,name='learning_rate')
 
-        image,keep_prob,layer_3_output,layer_4_output,layer_7_output=load_vgg(sess,vgg_path)
+        input_image,keep_prob,layer_3_output,layer_4_output,layer_7_output=load_vgg(sess,vgg_path)
 
         nn_last_layer=layers(layer_3_output, layer_4_output, layer_7_output, num_classes)
 
