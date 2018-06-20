@@ -62,14 +62,14 @@ def layers(vgg_layer3_out, vgg_layer4_out, vgg_layer7_out, num_classes):
     
     input2_4=tf.layers.conv2d(vgg_layer4_out, num_classes, 1, padding='same',kernel_initializer=tf.random_normal_initializer(stddev=0.01), kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
     
-    output_4=tf.add(input2_4,input_4)
+    output_4=tf.add(input_4,input2_4)
 
     input_3=tf.layers.conv2d_transpose(output_4, num_classes, 4, strides=(2, 2), padding='same',kernel_initializer=tf.random_normal_initializer(stddev=0.01), kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
 
     input2_3=tf.layers.conv2d(vgg_layer3_out, num_classes, 1, padding='same', kernel_initializer=tf.random_normal_initializer(stddev=0.01), kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
 
     
-    output_3=tf.add(input2_3,input_3)
+    output_3=tf.add(input_3,input2_3)
     Input=tf.layers.conv2d_transpose(output_3,num_classes, 16, strides=(8,8), padding='same', kernel_initializer=tf.random_normal_initializer(stddev=0.01), kernel_regularizer=tf.contrib.layers.l2_regularizer(1e-3))
     return Input
 tests.test_layers(layers)
